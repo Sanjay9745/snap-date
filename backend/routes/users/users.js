@@ -33,7 +33,7 @@ exports.createOrFind = async (req, res) => {
             await user.save();
         }
 
-        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, JWT_SECRET);
 
         res.json({ success: true, token, user: { username: user.username, age: user.age, gender: user.gender, location: user.location } });
     } catch (error) {
